@@ -16,7 +16,7 @@
         <e p="bin" t="ExcludeRecursive" />
       </e>
     </e>
-    <e p="$PROJECT_DIR$/../Library/Caches/Rider2018.3/extResources" t="IncludeRecursive" />
-    <e p="$PROJECT_DIR$/../Library/Caches/Rider2018.3/resharper-host/local/Transient/ReSharperHost/v183/SolutionCaches/_GRID GROG.-789223692.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2018.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2018.3/resharper-host/local/Transient/ReSharperHost/v183/SolutionCaches/_GRID GROG.-1268488312.00" t="ExcludeRecursive" />
   </component>
 </project>
