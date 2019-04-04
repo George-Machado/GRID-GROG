@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class GemBoi : MonoBehaviour
 {
-    const int TileColor = 6;
-
+    
     private SpriteRenderer _sr;
 
     private int _type;
 
-    private  Color[] gemColors = new Color[TileColor];
+    private  Color[] gemColors = new Color[6];
     
     
     // Start is called before the first frame update
@@ -41,8 +40,18 @@ public class GemBoi : MonoBehaviour
     {
         SetColor(Random.Range(0,gemColors.Length));
     }
-    
+    public bool IsMatch (GameObject t1, GameObject t2) {
+        GemBoi ts1 = t1.GetComponent<GemBoi>();
+        GemBoi ts2 = t2.GetComponent<GemBoi>();
 
+        return (ts1._type == _type && ts2._type == _type);
+    }
+    
+    public void Kill () {
+        _sr.enabled = false;
+    }
+
+    
 
 
 }

@@ -8,10 +8,11 @@ public class GridManager : MonoBehaviour
    
    const int Rows = 7;
    const int Cols = 5;
-    
-   private int [,] _gems = new int [Cols,Rows];
+
+   public GameObject[,] _gems;
    
    public GameObject gemsPrefab;
+   public GameObject playerPrefab;
    
    
 
@@ -33,14 +34,23 @@ public class GridManager : MonoBehaviour
 
     public void InstantiateGrid()
     {
+        _gems = new GameObject[Cols,Rows];
         for (int x = 0; x < Cols; x++)
         {
             for (int y = 0; y < Rows; y++)
             {
-                GameObject gem = Instantiate(gemsPrefab);
-                gem.GetComponent<GemBoi>().SetRandomColor();
-                gem.transform.position = new Vector2(x , y );
-               
+                if (x == 2 && y == 3)
+                {
+                    GameObject player = Instantiate(playerPrefab);
+                    player.transform.position = new Vector2(x, y);
+                }
+                else
+                {
+                    GameObject gem = Instantiate(gemsPrefab);
+                                    gem.GetComponent<GemBoi>().SetRandomColor();
+                                  gem.transform.position = new Vector2(x, y);
+                }
+                
             }
         }
     }
