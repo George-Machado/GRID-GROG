@@ -29,7 +29,8 @@ public class GemBoi : MonoBehaviour
         _type = t;
        
 
-        if (_sr == null) {
+        if (_sr == null) 
+        {
             _sr = GetComponent<SpriteRenderer>();
         }
 
@@ -47,7 +48,8 @@ public class GemBoi : MonoBehaviour
         return (ts1._type == _type && ts2._type == _type);
     }
     
-    public void Kill () {
+    public void Kill () 
+    {
         _sr.enabled = false;
     }
 

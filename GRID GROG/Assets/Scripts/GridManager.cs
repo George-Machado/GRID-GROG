@@ -47,8 +47,8 @@ public class GridManager : MonoBehaviour
                 else
                 {
                     GameObject gem = Instantiate(gemsPrefab);
-                                    gem.GetComponent<GemBoi>().SetRandomColor();
-                                  gem.transform.position = new Vector2(x, y);
+                    gem.GetComponent<GemBoi>().SetRandomColor();
+                    gem.transform.position = new Vector2(x, y);
                 }
                 
             }
