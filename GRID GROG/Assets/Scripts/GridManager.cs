@@ -27,10 +27,7 @@ public class GridManager : MonoBehaviour
     
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 
     public void InstantiateGrid()
     {
@@ -43,12 +40,32 @@ public class GridManager : MonoBehaviour
                 {
                     GameObject player = Instantiate(playerPrefab);
                     player.transform.position = new Vector2(x, y);
+                    
                 }
                 else
                 {
                     GameObject gem = Instantiate(gemsPrefab);
                     gem.GetComponent<GemBoi>().SetRandomColor();
                     gem.transform.position = new Vector2(x, y);
+                }
+                
+            }
+        }
+    }
+
+   public void RefreshGrid()
+    {
+        for (int x = 0; x < Rows; x++)
+        {
+            for (int y = 0; y < Cols; y++)
+            {
+                if ([x, y].CompareTag("Player"))
+                {
+
+                }
+                else
+                {
+                    
                 }
                 
             }

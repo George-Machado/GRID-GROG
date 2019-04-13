@@ -9,7 +9,7 @@ public class GemBoi : MonoBehaviour
 
     private int _type;
 
-    private  Color[] gemColors = new Color[6];
+    private  Color[] gemColors = new Color[7];
     
     
     // Start is called before the first frame update
@@ -25,6 +25,7 @@ public class GemBoi : MonoBehaviour
         gemColors[3] = Color.green;
         gemColors[4] = Color.magenta;
         gemColors[5] = Color.cyan;
+        
 
         _type = t;
        
