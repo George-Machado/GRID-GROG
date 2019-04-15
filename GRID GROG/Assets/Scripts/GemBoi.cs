@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class GemBoi : MonoBehaviour
@@ -9,7 +10,10 @@ public class GemBoi : MonoBehaviour
 
     private int _type;
 
-    private  Color[] gemColors = new Color[7];
+    private  Color[] gemColors = new Color[6];
+    public ParticleSystem exlposion;
+    
+    
     
     
     // Start is called before the first frame update
@@ -25,8 +29,7 @@ public class GemBoi : MonoBehaviour
         gemColors[3] = Color.green;
         gemColors[4] = Color.magenta;
         gemColors[5] = Color.cyan;
-        
-
+     
         _type = t;
        
 
@@ -46,12 +49,17 @@ public class GemBoi : MonoBehaviour
         GemBoi ts1 = t1.GetComponent<GemBoi>();
         GemBoi ts2 = t2.GetComponent<GemBoi>();
 
+        Debug.Log("match");
         return (ts1._type == _type && ts2._type == _type);
+        
+        
+       
     }
     
     public void Kill () 
     {
         _sr.enabled = false;
+        Instantiate(exlposion, transform.position, Quaternion.identity);
     }
 
     

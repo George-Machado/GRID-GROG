@@ -41,7 +41,9 @@ public class Player : MonoBehaviour
             GridManager.Instance._gems[_xPos - 1, _yPos] = gameObject;
             GridManager.Instance._gems[_xPos, _yPos] = _tempGameObject;
             transform.position += new Vector3(-1,0,0);
+            
             GridManager.Instance.RefreshGrid();
+            GridManager.Instance.RemoveMatches();
 
         }
 
@@ -57,6 +59,7 @@ public class Player : MonoBehaviour
             GridManager.Instance._gems[_xPos, _yPos] = _tempGameObject;
             transform.position += new Vector3(+1,0,0);
             GridManager.Instance.RefreshGrid();
+            GridManager.Instance.RemoveMatches();
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -68,9 +71,11 @@ public class Player : MonoBehaviour
 
             _tempGameObject = GridManager.Instance._gems[_xPos, _yPos + 1];
             GridManager.Instance._gems[_xPos, _yPos + 1] = gameObject;
-            GridManager.Instance._gems[_xPos, _yPos + 1] = _tempGameObject;
+            GridManager.Instance._gems[_xPos, _yPos] = _tempGameObject;
             transform.position += new Vector3(0,1,0);
+           
             GridManager.Instance.RefreshGrid();
+            GridManager.Instance.RemoveMatches();
 
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -82,9 +87,10 @@ public class Player : MonoBehaviour
 
             _tempGameObject = GridManager.Instance._gems[_xPos, _yPos - 1];
             GridManager.Instance._gems[_xPos, _yPos - 1] = gameObject;
-            GridManager.Instance._gems[_xPos, _yPos - 1] = _tempGameObject;
+            GridManager.Instance._gems[_xPos, _yPos] = _tempGameObject;
             transform.position += new Vector3(0,-1,0);
             GridManager.Instance.RefreshGrid();
+            GridManager.Instance.RemoveMatches();
 
         }
         
