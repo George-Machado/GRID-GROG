@@ -28,22 +28,21 @@ public class Player : MonoBehaviour
     {
         _xPos = Mathf.RoundToInt(transform.position.x);
         _yPos = Mathf.RoundToInt(transform.position.y);
-        
-        
+
+        var moved = false;
+
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             if (_xPos <= 0)
             {
                 return;
             }
-           
+
+            moved = true;
             _tempGameObject = GridManager.Instance._gems[_xPos - 1, _yPos];
             GridManager.Instance._gems[_xPos - 1, _yPos] = gameObject;
             GridManager.Instance._gems[_xPos, _yPos] = _tempGameObject;
-            transform.position += new Vector3(-1,0,0);
-            
-            GridManager.Instance.RefreshGrid();
-            GridManager.Instance.RemoveMatches();
+            transform.position += new Vector3(-1, 0, 0);
 
         }
 
@@ -53,13 +52,12 @@ public class Player : MonoBehaviour
             {
                 return;
             }
-            
+
+            moved = true;
             _tempGameObject = GridManager.Instance._gems[_xPos + 1, _yPos];
-            GridManager.Instance._gems[_xPos + 1, _yPos] =  gameObject;
+            GridManager.Instance._gems[_xPos + 1, _yPos] = gameObject;
             GridManager.Instance._gems[_xPos, _yPos] = _tempGameObject;
-            transform.position += new Vector3(+1,0,0);
-            GridManager.Instance.RefreshGrid();
-            GridManager.Instance.RemoveMatches();
+            transform.position += new Vector3(+1, 0, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -69,15 +67,14 @@ public class Player : MonoBehaviour
                 return;
             }
 
+            moved = true;
             _tempGameObject = GridManager.Instance._gems[_xPos, _yPos + 1];
             GridManager.Instance._gems[_xPos, _yPos + 1] = gameObject;
             GridManager.Instance._gems[_xPos, _yPos] = _tempGameObject;
-            transform.position += new Vector3(0,1,0);
-           
-            GridManager.Instance.RefreshGrid();
-            GridManager.Instance.RemoveMatches();
+            transform.position += new Vector3(0, 1, 0);
 
         }
+
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             if (_yPos <= 0)
@@ -85,18 +82,17 @@ public class Player : MonoBehaviour
                 return;
             }
 
+            moved = true;
             _tempGameObject = GridManager.Instance._gems[_xPos, _yPos - 1];
             GridManager.Instance._gems[_xPos, _yPos - 1] = gameObject;
             GridManager.Instance._gems[_xPos, _yPos] = _tempGameObject;
-            transform.position += new Vector3(0,-1,0);
+            transform.position += new Vector3(0, -1, 0);
+        }
+
+        if (moved)
+        {
             GridManager.Instance.RefreshGrid();
             GridManager.Instance.RemoveMatches();
-
         }
-        
-        
-        
     }
-
-    
 }
