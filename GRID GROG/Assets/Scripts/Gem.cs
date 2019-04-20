@@ -21,12 +21,12 @@ public class Gem : MonoBehaviour
     }
     public void SetColor(int t)
     {
-        gemColors[0] = Color.yellow;
-        gemColors[1] = Color.red;
-        gemColors[2] = Color.blue;
-        gemColors[3] = Color.green;
-        gemColors[4] = Color.magenta;
-        gemColors[5] = Color.cyan;
+        gemColors[0] = new Color32(223,187,36,255);
+        gemColors[1] = new Color32(35,31,32,255);
+        gemColors[2] = new Color32(104, 123, 160,255);
+        gemColors[3] = new Color32(128,151,120,255);
+        gemColors[4] = new Color32(209, 155, 111, 255);
+        gemColors[5] = new Color32(135, 62, 53, 255);
      
         myType = t;
        
@@ -64,7 +64,20 @@ public class Gem : MonoBehaviour
     {
         _spriteRenderer.enabled = false;
         Instantiate(exlposion, transform.position, Quaternion.identity);
+        
         StartCoroutine(SetRemovedAfterOneFrame());
+    }
+    
+    public bool IsEmpty()
+    {
+
+        if (_spriteRenderer.enabled == false)
+        {
+            return true;
+        }
+
+        return false;
+
     }
 
     public IEnumerator SetRemovedAfterOneFrame()

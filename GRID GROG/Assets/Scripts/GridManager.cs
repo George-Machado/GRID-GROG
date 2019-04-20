@@ -38,8 +38,9 @@ public class GridManager : MonoBehaviour
         if (!checkedForMatches)
         {
             checkedForMatches = true;
-            Debug.Log("Checking for matches.");
+           
             CheckForMatches();
+            
         }
     }
 
@@ -147,7 +148,7 @@ public class GridManager : MonoBehaviour
                     {
                         if (currentGem.CheckMatchThree(horizontal1, horizontal2))
                         {
-                            Debug.Log("Got to here.");
+                          
                             RemoveMatchedGems(currentGem.gameObject, horizontal1, horizontal2);
                         }
                     }
@@ -163,7 +164,7 @@ public class GridManager : MonoBehaviour
                     {
                         if (currentGem.CheckMatchThree(vertical1, vertical2))
                         {
-                            Debug.Log("Got to here.");
+                           
                             RemoveMatchedGems(currentGem.gameObject, vertical1, vertical2);
                         }
                     }
@@ -190,14 +191,83 @@ public class GridManager : MonoBehaviour
 
     public void RefreshGrid()
     {
+        int[] numGems = new int[6];
+        
         for (int x = 0; x < columns; x++)
         {
             for (int y = 0; y < rows; y++)
             {
                 _gems[x, y].transform.position = new Vector2(x, y);
+                
+                if (_gems[x, y].GetComponent<Gem>()!= null && !_gems[x,y].GetComponent<Gem>().IsEmpty())
+                {
+                    if (_gems[x, y].GetComponent<Gem>().GetType() == 0)
+                    {
+                        numGems[0]++;
+
+                    }
+
+                    if (_gems[x, y].GetComponent<Gem>().GetType() == 1)
+                    {
+                        numGems[1]++;
+
+                    }
+
+                    if (_gems[x, y].GetComponent<Gem>().GetType() == 2)
+                    {
+                        numGems[2]++;
+
+                    }
+
+                    if (_gems[x, y].GetComponent<Gem>().GetType() == 3)
+                    {
+                        numGems[3]++;
+
+                    }
+
+                    if (_gems[x, y].GetComponent<Gem>().GetType() == 4)
+                    {
+                        numGems[4]++;
+
+                    }
+
+                    if (_gems[x, y].GetComponent<Gem>().GetType() == 5)
+                    {
+                        numGems[5]++;
+
+                    }
+                }
             }
         }
+        CheckForGameOver(numGems);
+        Debug.Log(numGems[0]+" , " + numGems[1]+" , "+ numGems[2]+" , "+ numGems[3]+" , "+numGems[4]+" , "+ numGems[5]);
     }
+    
+ 
+
+    public void CheckForGameOver(int[] numberGems)
+    {
+        int numZeroes = 0;
+
+        for (int x = 0; x < numberGems.Length; x++)
+        {
+            if (numberGems[x] < 3 && numberGems[x] != 0)
+            {
+                Debug.Log("GAMUS OVUS");
+            }
+
+            if (numberGems[x] == 0) 
+            {
+                numZeroes++;
+            }
+           
+        } if (numZeroes == 6) 
+        {
+            Debug.Log("you rang?" + numZeroes);
+        }
+        
+    }
+
 
 
 
