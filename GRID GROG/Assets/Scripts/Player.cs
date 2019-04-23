@@ -12,10 +12,16 @@ public class Player : MonoBehaviour
     private int _yPos;
 
     private GameObject _tempGameObject;
+
+    private AudioSource _moveSound;
+
+    public GameObject GemGameObject;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        GemGameObject = GameObject.FindWithTag("gems");
+        _moveSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -72,6 +78,7 @@ public class Player : MonoBehaviour
             GridManager.Instance._gems[_xPos, _yPos + 1] = gameObject;
             GridManager.Instance._gems[_xPos, _yPos] = _tempGameObject;
             transform.position += new Vector3(0, 1, 0);
+            
 
         }
 
@@ -90,9 +97,20 @@ public class Player : MonoBehaviour
         }
 
         if (moved)
-        {
+        { 
             GridManager.Instance.RefreshGrid();
             GridManager.Instance.RemoveMatches();
+            PlaySound();
         }
     }
+
+    public void PlaySound()
+    {
+        if (_tempGameObject.GetComponent<Gem>().IsEmpty()==false)
+        {
+            _moveSound.Play();
+        }
+    }
+    
+   
 }

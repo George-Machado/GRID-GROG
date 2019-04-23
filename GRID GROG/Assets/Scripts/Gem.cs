@@ -13,10 +13,12 @@ public class Gem : MonoBehaviour
 
     private  Color[] gemColors = new Color[6];
     public ParticleSystem exlposion;
+  
     
     // Start is called before the first frame update
     void Start()
     {
+        
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
     public void SetColor(int t)
@@ -64,7 +66,7 @@ public class Gem : MonoBehaviour
     {
         _spriteRenderer.enabled = false;
         Instantiate(exlposion, transform.position, Quaternion.identity);
-        
+        Soundmanger.instance.PlaySoundBite();
         StartCoroutine(SetRemovedAfterOneFrame());
     }
     
@@ -85,7 +87,6 @@ public class Gem : MonoBehaviour
         yield return new WaitForEndOfFrame();
         removed = true;
         GridManager.Instance.AddOneToScore();
-        
     }
 }
 
