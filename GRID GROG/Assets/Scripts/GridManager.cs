@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GridManager : MonoBehaviour
 {
@@ -253,7 +254,7 @@ public class GridManager : MonoBehaviour
         {
             if (numberGems[x] < 3 && numberGems[x] != 0)
             {
-                Debug.Log("GAMUS OVUS");
+                SceneManager.LoadScene("End Screen");
             }
 
             if (numberGems[x] == 0) 
@@ -261,9 +262,9 @@ public class GridManager : MonoBehaviour
                 numZeroes++;
             }
            
-        } if (numZeroes == 6) 
+        } if (numZeroes == 6)
         {
-            Debug.Log("you rang?" + numZeroes);
+            SceneManager.LoadScene("Win screen");
         }
         
     }
